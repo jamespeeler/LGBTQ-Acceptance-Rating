@@ -1,13 +1,20 @@
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
-async function makeReq(){
+async function makeReq() {
+  console.log("clicked")
 
-  const userName = document.querySelector("#userName").value;
-  const res = await fetch(`/api?student=${userName}`)
+  const businessName = document.querySelector("#business").value;
+  console.log(businessName)
+
+  const res = await fetch(`/api?business=${businessName}`)
   const data = await res.json()
 
   console.log(data);
-  document.querySelector("#personName").textContent = data.name
-  document.querySelector("#personStatus").textContent = data.status
-  document.querySelector("#personOccupation").textContent = data.currentOccupation
+  console.log(data.name);
+  document.querySelector("#businessName").textContent = data.name
+  document.querySelector("#businessImg").src = data.img
+  document.querySelector("#businessUrl").textContent = data.url
+  document.querySelector("#businessUrl").textContent = data.url
+
+
 }
