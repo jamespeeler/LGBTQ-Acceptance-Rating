@@ -1,5 +1,24 @@
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2020/06/25/11/30/pastel-5339368_1280.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;}
 
-h1{
-  color: red;
-}
+h1, h2, p, a {
+  color: white;
+  text-align: center;}
 
+section {
+  display: flex;
+  justify-content: center;}
+
+button {
+  background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/2/64/96BfMP.png");
+  background-repeat: repeat;
+  background-size: contain;}
+
+button:active {
+  transform: translateY(1px);}
+
+img {
+  display: flex;
+  justify-content: center;}
