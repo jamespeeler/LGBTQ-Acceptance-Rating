@@ -1,9 +1,15 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
   background-image: url("bodybackground.png");
   background-repeat: no-repeat;
   background-size: cover;}
 
 h1, h2, p, a {
+  font-family: 'Glory', sans-serif;
+  font-size: 42px;
   color: white;
   text-align: center;}
 
@@ -21,4 +27,6 @@ button:active {
 
 img {
   display: flex;
-  justify-content: center;}
+  justify-content: center;
+  max-height: 75%;
+}
