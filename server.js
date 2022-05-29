@@ -13,15 +13,15 @@ const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
 
-//This is necessary for API key privacy
+//This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
 
 //These are modules necessary to make API requests to Yelp Fusion API
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors') // We have to include CORS in order to make an API request to Yelp
 const app = express()
 
-//This is where the responses from the Yelp Fusion API will be stored. It will always be an array of 5 objects
+//This is where the responses from the Yelp Fusion API will be stored. It will always be an array of 5 objects: play with this if you want to play with the API results
 let apiResponse;
 
 
@@ -50,17 +50,16 @@ const server = http.createServer((req, res) => {
       console.log(businessList);
 
 
-      //This is where the Yelp Fusion API is fetched, and the data is stored in the 'apiResponse' global variable
+      //This is where the Yelp Fusion API is fetched
       fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=nyc&limit=5`, {
-        //These are HTTP headers, apparently important when using APIs
-        headers: { 
+        headers: { //These are HTTP headers, apparently important when using APIs
           'Authorization': `Bearer ${process.env.API_KEY}`//API key is hidden in the .env file || BYOA - bring your own API Key
         }
       })
         .then(res => res.json())//Parse response as JSON etc.
         .then(json => {
-           apiResponse = json.businesses; 
-           console.log(apiResponse);
+           apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
+           console.log(apiResponse); //you can see what you just received in the terminal
       });
       // Yelp Fusion API call ends here ^^^
 
@@ -135,4 +134,5 @@ app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
 
+//this starts the server
 server.listen(8000);
