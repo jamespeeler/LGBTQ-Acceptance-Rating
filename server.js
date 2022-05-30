@@ -51,7 +51,8 @@ const server = http.createServer((req, res) => {
       const input = params['business'].toLowerCase().replace("%20", " "); //user input
       console.log(businessList);
 
-      //This code block checks the Node version. If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
+      //This code block checks your Node version and then calls the Yelp Fusion API
+      //If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
       if (Number(process.version.substring(1,3)) < 18){
         const fetch = require('node-fetch');
         yelpApiCall();
