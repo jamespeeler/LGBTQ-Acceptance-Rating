@@ -18,9 +18,9 @@ const figlet = require('figlet')
 //This conditional checks to see if the installed version of Node is older than version 18,
 //and defines 'fetch' if the installed version is older. This is because 'fetch' was introduced as a default
 //module in Node 18 (on April 19, 2022), so if you try to define 'fetch' in v18 or above, it will break the code.
-if (Number(process.version.substring(1,3)) < 18){
-  const fetch = require('node-fetch');
-}
+// if (Number(process.version.substring(1,3)) < 18){
+//   const fetch = require('node-fetch');
+// }
 
 
 
@@ -61,20 +61,26 @@ const server = http.createServer((req, res) => {
       const input = params['business'].toLowerCase().replace("%20", " "); //user input
       console.log(businessList);
 
+      //This code block checks the Node version. If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
+      if (Number(process.version.substring(1,3)) < 18){
+        const fetch = require('node-fetch');
+        yelpApiCall();
+      } else {
+        yelpApiCall();
+      }
 
-      //This is where the Yelp Fusion API is fetched
-      fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=nyc&limit=5`, {
-        headers: { //These are HTTP headers, apparently important when using APIs
-          'Authorization': `Bearer ${process.env.API_KEY}`//API key is hidden in the .env file || BYOA - bring your own API Key
-        }
-      })
-        .then(res => res.json())//Parse response as JSON etc.
-        .then(json => {
-          apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
-          console.log(apiResponse); //you can see what you just received in the terminal
-        });
-
-
+      function yelpApiCall() {
+       //This is where the Yelp Fusion API is fetched  
+        fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=nyc&limit=5`, {
+          headers: { //These are HTTP headers, apparently important when using APIs
+            'Authorization': `Bearer ${process.env.API_KEY}`//API key is hidden in the .env file || BYOA - bring your own API Key
+          }})
+          .then(res => res.json())//Parse response as JSON etc.
+          .then(json => {
+            apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
+            console.log(apiResponse); //you can see what you just received in the terminal
+          });
+      }
       // Yelp Fusion API call ends here ^^^
 
 
