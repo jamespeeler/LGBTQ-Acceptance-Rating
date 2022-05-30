@@ -12,6 +12,11 @@ const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
+let fetch = '';
+if (Number(process.version.substring(1, 3)) < 18) {
+  fetch = require('node-fetch');
+}
+
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
@@ -35,6 +40,7 @@ const server = http.createServer((req, res) => {
   console.log(page);
   console.log(params);
 
+
   if (page == '/') {
     fs.readFile('index.html', function (err, data) {
       res.writeHead(200, {
@@ -48,23 +54,22 @@ const server = http.createServer((req, res) => {
     if ('business' in params) { //Check to see if the API calls includes business, ex: `/api?business=${businessName}` I assume at least.
       const input = params['business'].toLowerCase().replace("%20", " "); //user input
       console.log(businessList);
+      yelpApiCall();
 
 
-      //This code block checks your Node version and then calls the Yelp Fusion API
-      //If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
-      if (Number(process.version.substring(1,3)) < 18){
-        const fetch = require('node-fetch');
-        yelpApiCall();
-      } else {
-        yelpApiCall();
-      }
 
       function yelpApiCall() {
-       //This is where the Yelp Fusion API is fetched  
+        //This code block checks your Node version and then calls the Yelp Fusion API
+        //If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
+
+
+
+        //This is where the Yelp Fusion API is fetched  
         fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=nyc&limit=5`, {
           headers: { //These are HTTP headers, apparently important when using APIs
             'Authorization': `Bearer ${process.env.API_KEY}`//API key is hidden in the .env file || BYOA - bring your own API Key
-          }})
+          }
+        })
           .then(res => res.json())//Parse response as JSON etc.
           .then(json => {
             apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
