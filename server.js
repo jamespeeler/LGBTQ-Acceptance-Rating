@@ -1,3 +1,5 @@
+
+
 class Business {
   constructor(name, url, img, rating) {
     this.name = name
@@ -12,6 +14,9 @@ const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
+const fetch = require('node-fetch');
+
+
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
@@ -58,9 +63,11 @@ const server = http.createServer((req, res) => {
       })
         .then(res => res.json())//Parse response as JSON etc.
         .then(json => {
-           apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
-           console.log(apiResponse); //you can see what you just received in the terminal
-      });
+          apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
+          console.log(apiResponse); //you can see what you just received in the terminal
+        });
+
+
       // Yelp Fusion API call ends here ^^^
 
 
@@ -70,7 +77,7 @@ const server = http.createServer((req, res) => {
         });
         const objToJson = new Business("Bowtie Behavior", "https://www.bowtiebehavior.com/", "https://static.wixstatic.com/media/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg/v1/fill/w_548,h_604,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg", 10)
         res.end(JSON.stringify(objToJson));
-      } 
+      }
       else if (businessList.some(busi => busi.name === input)) { //If the business is in the list.
         res.writeHead(200, {
           'Content-Type': 'application/json'
@@ -82,7 +89,7 @@ const server = http.createServer((req, res) => {
         //Return it as JSON data
         const objToJson = businessList[index];
         res.end(JSON.stringify(objToJson));
-      } 
+      }
       else if (params['business'] != 'leon') { //If it doesn't exist make a new business
         res.writeHead(200, {
           'Content-Type': 'application/json'
@@ -125,11 +132,11 @@ const server = http.createServer((req, res) => {
 
 //These 'app' code blocks are used to get CORS running on our server
 app.use(cors())
- 
+
 app.get('/products/:id', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
+  res.json({ msg: 'This is CORS-enabled for all origins!' })
 })
- 
+
 app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
