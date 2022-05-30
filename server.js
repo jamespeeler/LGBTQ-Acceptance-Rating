@@ -15,16 +15,6 @@ const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
 
-//This conditional checks to see if the installed version of Node is older than version 18,
-//and defines 'fetch' if the installed version is older. This is because 'fetch' was introduced as a default
-//module in Node 18 (on April 19, 2022), so if you try to define 'fetch' in v18 or above, it will break the code.
-// if (Number(process.version.substring(1,3)) < 18){
-//   const fetch = require('node-fetch');
-// }
-
-
-
-
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
 
