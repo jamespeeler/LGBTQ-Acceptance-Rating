@@ -1,5 +1,3 @@
-
-
 class Business {
   constructor(name, url, img, rating) {
     this.name = name
@@ -14,9 +12,6 @@ const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
-const fetch = require('node-fetch');
-
-
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
