@@ -1,5 +1,3 @@
-
-
 class Business {
   constructor(name, url, img, rating) {
     this.name = name
@@ -51,53 +49,56 @@ const server = http.createServer((req, res) => {
   } else if (page == '/api') { //If API is called? Current scenario is when button is pressed.
 
     if ('business' in params) { //Check to see if the API calls includes business, ex: `/api?business=${businessName}` I assume at least.
-      const input = params['business'].toLowerCase().replace("%20", " "); //user input
-      console.log(businessList);
+      const input = params['business'].toLowerCase().replace("%20", " "); //user input //toLower and replace makes it case-insensitive and fixes spacing.
+      let location = params['location'].toLowerCase().replace("%20", " ");
+
+      if (location.trim() == "") {
+        location = "nyc"
+      }
 
 
       //This is where the Yelp Fusion API is fetched
-      fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=nyc&limit=5`, {
-        headers: { //These are HTTP headers, apparently important when using APIs
-          'Authorization': `Bearer ${process.env.API_KEY}`//API key is hidden in the .env file || BYOA - bring your own API Key
-        }
-      })
-        .then(res => res.json())//Parse response as JSON etc.
+      fetch(`https://api.yelp.com/v3/businesses/search?term=${input}&location=${location}&limit=5`, {
+          headers: { //These are HTTP headers, apparently important when using APIs
+            'Authorization': `Bearer ${process.env.API_KEY}` //API key is hidden in the .env file || BYOA - bring your own API Key
+          }
+        })
+        .then(res => res.json()) //Parse response as JSON etc.
         .then(json => {
           apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
           console.log(apiResponse); //you can see what you just received in the terminal
+          res.end(JSON.stringify(apiResponse));
         });
 
 
       // Yelp Fusion API call ends here ^^^
 
 
-      if (input == 'bowtie behavior') { //Clever! Looks like this makes it case-insensitive, fixes spacing.
-        res.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-        const objToJson = new Business("Bowtie Behavior", "https://www.bowtiebehavior.com/", "https://static.wixstatic.com/media/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg/v1/fill/w_548,h_604,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg", 10)
-        res.end(JSON.stringify(objToJson));
-      }
-      else if (businessList.some(busi => busi.name === input)) { //If the business is in the list.
-        res.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-        //Find the index of where it is in the list
-        const index = businessList.findIndex(object => {
-          return object.name === input;
-        });
-        //Return it as JSON data
-        const objToJson = businessList[index];
-        res.end(JSON.stringify(objToJson));
-      }
-      else if (params['business'] != 'leon') { //If it doesn't exist make a new business
-        res.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-        const objToJson = new Business(params['business'].toLowerCase().replace("%20", " "), "/", "/", null)
-        businessList.push(objToJson);
-        res.end(JSON.stringify(objToJson));
-      }
+      // if (input == 'bowtie behavior') {
+      //   res.writeHead(200, {
+      //     'Content-Type': 'application/json'
+      //   });
+      //   const objToJson = new Business("Bowtie Behavior", "https://www.bowtiebehavior.com/", "https://static.wixstatic.com/media/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg/v1/fill/w_548,h_604,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f25e9b_c67af0e6cb48435abbbf4958f86905fa~mv2.jpg", 10)
+      //   res.end(JSON.stringify(objToJson));
+      // } else if (businessList.some(busi => busi.name === input)) { //If the business is in the list.
+      //   res.writeHead(200, {
+      //     'Content-Type': 'application/json'
+      //   });
+      //   //Find the index of where it is in the list
+      //   const index = businessList.findIndex(object => {
+      //     return object.name === input;
+      //   });
+      //   //Return it as JSON data
+      //   const objToJson = businessList[index];
+      //   res.end(JSON.stringify(objToJson));
+      // } else if (params['business'] != 'leon') { //If it doesn't exist make a new business
+      //   res.writeHead(200, {
+      //     'Content-Type': 'application/json'
+      //   });
+      //   const objToJson = new Business(params['business'].toLowerCase().replace("%20", " "), "/", "/", null)
+      //   businessList.push(objToJson);
+      //   res.end(JSON.stringify(objToJson));
+      // }
     }
 
 
@@ -134,12 +135,16 @@ const server = http.createServer((req, res) => {
 app.use(cors())
 
 app.get('/products/:id', function (req, res, next) {
-  res.json({ msg: 'This is CORS-enabled for all origins!' })
+  res.json({
+    msg: 'This is CORS-enabled for all origins!'
+  })
 })
 
 app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
 
-//this starts the server
-server.listen(8000);
+//this starts the server //server.listen(8000);
+server.listen(8000, function () {
+  console.log(`This project can now be accessed on the browser at http://localhost:${server.address().port}`);
+});
