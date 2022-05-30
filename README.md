@@ -2,7 +2,7 @@
 This is the 100Devs LGBTQ+ project group repo! 
 
 ## Contributing
-Clone this repo to your local machine to get started. You will then need to ensure your local server is set up properly for this application to work (guidance below). Then, check out the Issues tab on GitHub to see some ideas of what to work on. You can also reach the involved "Rainbow Group" members via the lgbtq-plus 100devs study community channel.
+Clone this repo to your local machine to get started. You will then need to ensure your local server is set up properly for this application to work (guidance below). Once everything is set up, check out the Issues tab on GitHub for ideas of what to work on. You can also reach the involved "Rainbow Group" members via the lgbtq-plus 100devs study community channel.
 
 ### Setting up server and accessing app
 1. Make sure [Node](https://nodejs.org/en/) is installed (version 18 is currently required). You can run "node -v" in your terminal to see if what version you currently have.
