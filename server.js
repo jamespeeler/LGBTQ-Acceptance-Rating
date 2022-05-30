@@ -14,6 +14,9 @@ const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
+const fetch = require('node-fetch');
+
+
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
@@ -51,6 +54,7 @@ const server = http.createServer((req, res) => {
       const input = params['business'].toLowerCase().replace("%20", " "); //user input
       console.log(businessList);
 
+
       //This code block checks your Node version and then calls the Yelp Fusion API
       //If running a version older than v18, it defines 'fetch'. If running v18 or newer, does not define 'fetch'
       if (Number(process.version.substring(1,3)) < 18){
@@ -73,6 +77,7 @@ const server = http.createServer((req, res) => {
           });
       }
       // Yelp Fusion API call ends here ^^^
+
 
 
       if (input == 'bowtie behavior') { //Clever! Looks like this makes it case-insensitive, fixes spacing.
