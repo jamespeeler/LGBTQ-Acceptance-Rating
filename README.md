@@ -1,6 +1,12 @@
 # rainbow-group-project
 This is the 100Devs LGBTQ+ project group repo! 
 
+## Project
+The goal of this project was to be able to look up businesses and see what their "LGBTQ+ Acceptance Rating" is. We currently have no way to store or implement an actual rating system, so we will be returning a random number as a rating (with a disclaimer saying this is currently random and not a reflection of the business). In order to have access to currently existing businesses, we are using Yelp's API. When you search for a business, our server makes a request to Yelp and returns data to the client.
+
+### Future Features
+It would be awesome to actually allow people to submit ratings for businesses and show the current average rating!
+
 ## Contributing
 Clone this repo to your local machine to get started. You will then need to ensure your local server is set up properly for this application to work (guidance below). Once everything is set up, check out the Issues tab on GitHub for ideas of what to work on. You can also reach the involved "Rainbow Group" members via the lgbtq-plus 100devs study community channel.
 
