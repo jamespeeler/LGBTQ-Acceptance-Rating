@@ -1,6 +1,8 @@
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
-async function makeReq() {
+async function makeReq(event) {
+  event.preventDefault()
+
   //User input value.
   const businessName = document.querySelector("#business").value;
   const location = document.querySelector("#location").value;

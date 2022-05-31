@@ -82,7 +82,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-
 //These 'app' code blocks are used to get CORS running on our server
 app.use(cors())
 

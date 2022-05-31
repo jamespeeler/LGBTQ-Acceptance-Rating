@@ -17,26 +17,30 @@ section {
   display: flex;
   justify-content: center;}
 
-button {
+input[type="submit"] {
   background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/2/64/96BfMP.png");
   background-repeat: repeat;
   background-size: contain;}
 
-button:active {
+  input[type="submit"] :active {
   transform: translateY(1px);}
 
-  input{
-    height: 3rem;
-  }
+input{
+  height: 3rem;
+}
 
 img {
-  justify-content: center;
   max-width: 50vw;
   margin: auto;
 }
 
-#apiResults {
+.requestInfo, form {
   display: flex;
 	flex-flow: column wrap;
+  align-items: center;
+}
+
+input{
+  width: 70vw;
 }
 
