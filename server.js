@@ -103,12 +103,12 @@ const server = http.createServer((req, res) => {
 
 
   } //else if
-  else if (page == '/css/style.css') {
+  else if (page == 'css/style.css') {
     fs.readFile('css/style.css', function (err, data) {
       res.write(data);
       res.end();
     });
-  } else if (page == '/js/main.js') {
+  } else if (page == 'js/main.js') {
     fs.readFile('js/main.js', function (err, data) {
       res.writeHead(200, {
         'Content-Type': 'text/javascript'
