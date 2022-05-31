@@ -1,16 +1,11 @@
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
-let randomRating = Math.floor(Math.random()* 10)+ 1;
-console.log(Math.floor(Math.random()* 10)+ 1);
+let randomRating = Math.floor(Math.random() * 10) + 1;
+console.log(Math.floor(Math.random() * 10) + 1);
 
-<<<<<<< HEAD
-
-async function makeReq() {
-=======
 async function makeReq(event) {
   event.preventDefault()
 
->>>>>>> 83bda94e57892fa1a9eac20fb8b5276351f46c40
   //User input value.
   const businessName = document.querySelector("#business").value;
   const location = document.querySelector("#location").value;

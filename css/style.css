@@ -5,7 +5,13 @@ html {
 body {
   background-image: url("https://cdn.pixabay.com/photo/2020/06/25/11/30/pastel-5339368_1280.jpg");
   background-repeat: no-repeat;
-  background-size: cover;}
+  background-size: cover;
+}
+
+main{
+  width: 75vw;
+  margin: auto;
+}
 
 h1, h2, p, a {
   font-family: 'Glory', sans-serif;
@@ -17,16 +23,21 @@ section {
   display: flex;
   justify-content: center;}
 
+  footer p {
+    font-size: 3rem;
+  }
+
 input[type="submit"] {
   background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/2/64/96BfMP.png");
   background-repeat: repeat;
   background-size: contain;}
 
-  input[type="submit"] :active {
-  transform: translateY(1px);}
+input[type="submit"] :active {
+transform: translateY(1px);}
 
 input{
-  height: 3rem;
+  font-size: 2rem;
+  width: 50vw;
 }
 
 img {
@@ -40,7 +51,16 @@ img {
   align-items: center;
 }
 
-input{
-  width: 70vw;
-}
 
+@media all and (max-width: 500px){
+
+  main{
+    width: 100vw;  
+  }
+input {
+  width: 80vw;
+}
+img{
+max-width: 100vw;
+}
+}
