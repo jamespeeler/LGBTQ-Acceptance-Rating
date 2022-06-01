@@ -3,7 +3,7 @@ const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
 require('dotenv').config()
@@ -89,10 +89,6 @@ app.get('/products/:id', function (req, res, next) {
   res.json({
     msg: 'This is CORS-enabled for all origins!'
   })
-})
-
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
 })
 
 //this starts the server //server.listen(8000);
