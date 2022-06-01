@@ -13,7 +13,7 @@ main{
   margin: auto;
 }
 
-h1, h2, p, a {
+h1, h2, p, a, span {
   font-family: 'Glory', sans-serif;
   font-size: 4rem;
   color: white;

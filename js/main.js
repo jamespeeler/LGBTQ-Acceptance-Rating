@@ -1,7 +1,10 @@
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
-let randomRating = Math.floor(Math.random() * 10) + 1;
-console.log(Math.floor(Math.random() * 10) + 1);
+let randomRating = (Math.floor(Math.random() * 10) + 1);
+console.log(randomRating);
+
+//displays business rating on page 
+document.querySelector("#businessRating").innerText = randomRating
 
 async function makeReq(event) {
   event.preventDefault()
@@ -33,7 +36,5 @@ async function makeReq(event) {
   document.querySelector("#businessImg").src = business.image_url
   document.querySelector("#businessUrl").innerText = `${business.name}'s Yelp Page`
   document.querySelector("#businessUrl").href = business.url
-
-
 
 }
