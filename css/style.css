@@ -5,11 +5,17 @@ html {
 body {
   background-image: url("https://cdn.pixabay.com/photo/2020/06/25/11/30/pastel-5339368_1280.jpg");
   background-repeat: no-repeat;
-  background-size: cover;}
+  background-size: cover;
+}
 
-h1, h2, p, a {
+main{
+  width: 75vw;
+  margin: auto;
+}
+
+h1, h2, p, a, span {
   font-family: 'Glory', sans-serif;
-  font-size: 42px;
+  font-size: 4rem;
   color: white;
   text-align: center;}
 
@@ -17,16 +23,44 @@ section {
   display: flex;
   justify-content: center;}
 
-button {
+  footer p {
+    font-size: 3rem;
+  }
+
+input[type="submit"] {
   background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/2/64/96BfMP.png");
   background-repeat: repeat;
   background-size: contain;}
 
-button:active {
-  transform: translateY(1px);}
+input[type="submit"] :active {
+transform: translateY(1px);}
+
+input{
+  font-size: 2rem;
+  width: 30vw;
+}
 
 img {
+  max-width: 50vw;
+  margin: auto;
+}
+
+.requestInfo, form {
   display: flex;
-  justify-content: center;
-  max-height: 75%;
+	flex-flow: column wrap;
+  align-items: center;
+}
+
+
+@media all and (max-width: 500px){
+
+  main{
+    width: 100vw;  
+  }
+input {
+  width: 80vw;
+}
+img{
+max-width: 100vw;
+}
 }

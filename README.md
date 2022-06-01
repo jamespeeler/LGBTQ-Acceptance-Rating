@@ -1,8 +1,11 @@
 # rainbow-group-project
-This is the 100Devs LGBTQ+ project group repo!
+This is the 100Devs LGBTQ+ project group repo! 
 
-Here are a couple of tutorials for forking/cloning the repo, as well as making pull requests:
+## Project
+The goal of this project was to be able to look up businesses to see their "LGBTQ+ Acceptance Rating". We currently have no way to store or implement an actual rating system, so we will be returning a random number as a rating (with a disclaimer saying this is currently random and not a reflection of the business). When users look up a business, general information about it is also returned (using Yelp's API).
 
-https://docs.github.com/en/get-started/quickstart/contributing-to-projects
+### Future Features
+- allow users to submit ratings for businesses and display the current average rating
 
-https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/working-with-your-remote-repository-on-github-or-github-enterprise/creating-an-issue-or-pull-request
+### Want to contribute? Check out [CONTRIBUTING.md](CONTRIBUTING.md) to find out how!
+__Please let us know what issue you're working on by leaving a comment in the issue. It's important in order to keep everything running smoothly. Thank you!__

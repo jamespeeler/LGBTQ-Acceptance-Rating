@@ -1,0 +1,5 @@
+The API is working!!
+You can enter a restaurant name, or a food item, or really anything into the input, then when you press the button, the server makes an API request (with an encrypted API Key), then it stores the top 5 results for that search in a javascript variable. These objects have a lot of information: business name, image url, site url, overall rating, etc. Lots of good info. 
+
+Also: API key privacy. With API keys come great responsibility. You'll need to download a separate file from discord so that the code will work on your end, or else you won't be able to develop the site properly. I'll post it in the group, and/or you can just message me and I'll get it to you.
+Inside the folder, open the readme first, there is VERY important information in there; please follow the directions.
