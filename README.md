@@ -6,3 +6,5 @@ The goal of this project was to be able to look up businesses to see their "LGBT
 
 ### Future Features
 - allow users to submit ratings for businesses and display the current average rating
+
+### Want to contribute? Check out CONTRIBUTING.md to find out how!
