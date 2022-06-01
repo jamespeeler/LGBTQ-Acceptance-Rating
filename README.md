@@ -8,3 +8,4 @@ The goal of this project was to be able to look up businesses to see their "LGBT
 - allow users to submit ratings for businesses and display the current average rating
 
 ### Want to contribute? Check out [CONTRIBUTING.md](CONTRIBUTING.md) to find out how!
+__Please let us know what issue you're working on by leaving a comment in the issue. It's important in order to keep everything running smoothly. Thank you!__
