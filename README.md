@@ -9,3 +9,6 @@ The goal of this project was to be able to look up businesses to see their "LGBT
 
 ### Want to contribute? Check out [CONTRIBUTING.md](CONTRIBUTING.md) to find out how!
 __Please let us know what issue you're working on by leaving a comment in the issue. It's important in order to keep everything running smoothly. Thank you!__
+
+### Application Sample
+![](https://github.com/jamespeeler/rainbow-group-project/blob/Main/other/projectSampleGif.gif)
