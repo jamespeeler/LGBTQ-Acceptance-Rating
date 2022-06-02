@@ -1,8 +1,5 @@
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
-let randomRating = (Math.floor(Math.random() * 10) + 1);
-console.log(randomRating);
-
 async function makeReq(event) {
   event.preventDefault()
 
@@ -35,6 +32,43 @@ async function makeReq(event) {
   document.querySelector("#businessUrl").href = business.url
 
   //displays business rating on page 
+  let randomRating = (Math.floor(Math.random() * 10) + 1);
+  let ratingText = ""
+  switch (randomRating) {
+    case 1:
+      ratingText = `This place is not safe!`
+      break;
+    case 2:
+      ratingText = `They have a long way to go to be safe for the LGBTQ+ community!`
+      break;
+    case 3:
+      ratingText = `Not good, try somewhere else!`
+      break;
+    case 4:
+      ratingText = `This place definitely doesn't pass the vibe check`
+      break;
+    case 5:
+      ratingText = `Do better at supporting the LGBTQ+ community!`
+      break;
+    case 6:
+      ratingText = `Above average isn't good enough in this case... do better!`
+      break;
+    case 7:
+      ratingText = `Seems to be moving in the right direction but not there yet!`
+      break;
+    case 8:
+      ratingText = `Starting to get there... let's move toward 10 though!`
+      break;
+    case 9:
+      ratingText = `Doing pretty good, but there's room for improvement!`
+      break;
+    case 10:
+      ratingText = `They know what's up!!! Must be rainbow community ;)`
+      break;
+    default:
+      ratingText = `You shouldn't be here... how'd you get here???`
+      break;
+  }
   document.querySelector("#businessRating").innerText = randomRating
-
+  document.querySelector("#businessRatingMessage").innerText = ratingText
 }

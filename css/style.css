@@ -13,6 +13,15 @@ main{
   margin: auto;
 }
 
+p, h2{
+  margin: 1rem;
+}
+
+form{
+  border-bottom: .2rem solid white;
+  padding-bottom: 2rem;
+}
+
 h1, h2, p, a, span {
   font-family: 'Glory', sans-serif;
   font-size: 4rem;
@@ -53,14 +62,13 @@ img {
 
 
 @media all and (max-width: 500px){
-
-  main{
-    width: 100vw;  
-  }
+main{
+  width: 95vw;  
+}
 input {
   width: 80vw;
 }
 img{
-max-width: 100vw;
+max-width: 95vw;
 }
 }
