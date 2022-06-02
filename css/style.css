@@ -6,12 +6,17 @@ body {
   background-image: url("https://cdn.pixabay.com/photo/2020/06/25/11/30/pastel-5339368_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+
+  font-family: 'Glory', sans-serif; 
+  color: rgb(69, 60, 156);
+  text-align: center;
 }
 
 main{
   width: 75vw;
   margin: auto;
 }
+
 
 p, h2{
   margin: 1rem;
@@ -22,19 +27,31 @@ form{
   padding-bottom: 2rem;
 }
 
-h1, h2, p, a, span {
-  font-family: 'Glory', sans-serif;
+main h1{
+font-size: 5rem;
+}
+
+main h2{
   font-size: 4rem;
-  color: white;
-  text-align: center;}
+}
 
-section {
-  display: flex;
-  justify-content: center;}
+main p, main a {
+  font-size: 3rem;
+}
 
-  footer p {
-    font-size: 3rem;
-  }
+footer p {
+  font-size: 2rem;
+}
+
+/* this is the rating */
+main span {
+  font-size: 5rem;
+  font-weight: bold;
+  background-color: white;
+  /* border: .1rem solid rgb(69, 60, 156) ; */
+  border-radius: .5rem;
+  width: 5rem;
+}
 
 input[type="submit"] {
   background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/2/64/96BfMP.png");
@@ -58,6 +75,10 @@ img {
   display: flex;
 	flex-flow: column wrap;
   align-items: center;
+}
+
+a {
+  color: rgb(35, 111, 209);
 }
 
 
