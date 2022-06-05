@@ -1,8 +1,9 @@
-const http = require('http');
+const http = require('http')
 const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
+const PORT = 8000
 // const fetch = require('node-fetch');
 
 //This is necessary for API key privacy, the module which lets server.js talk with .env
@@ -13,6 +14,7 @@ const express = require('express')
 const cors = require('cors') // We have to include CORS in order to make an API request to Yelp
 const app = express()
 
+
 //This is where the responses from the Yelp Fusion API will be stored. It will always be an array of 5 objects: play with this if you want to play with the API results
 let apiResponse;
 
@@ -21,16 +23,8 @@ const server = http.createServer((req, res) => {
   const params = querystring.parse(url.parse(req.url).query);
   console.log(page);
   console.log(params);
-
-  if (page == '/') {
-    fs.readFile('index.html', function (err, data) {
-      res.writeHead(200, {
-        'Content-Type': 'text/html'
-      });
-      res.write(data);
-      res.end();
-    });
-  } else if (page == '/api') { //If API is called? Current scenario is when button is pressed.
+  
+  if (page == '/api') {  //If API is called? Current scenario is when button is pressed.
     /*Check to see if the API calls includes business, ex: `/api?business=${businessName}`*/
     if ('business' in params) {
       /* handle user input */
@@ -50,25 +44,10 @@ const server = http.createServer((req, res) => {
         .then(json => {
           apiResponse = json.businesses; //the data from the API is stored in the 'apiResponse' global variable as an array of 5 objects
           console.log(apiResponse); //you can see what you just received in the terminal
-          res.end(JSON.stringify(apiResponse));
-        });
+         res.end(JSON.stringify(apiResponse));
+        }); 
       //END - Yelp Fusion API handling
-    }
-
-  } else if (page == '/css/style.css') {
-    fs.readFile('css/style.css', function (err, data) {
-      res.write(data);
-      res.end();
-    });
-
-  } else if (page == '/js/main.js') {
-    fs.readFile('js/main.js', function (err, data) {
-      res.writeHead(200, {
-        'Content-Type': 'text/javascript'
-      });
-      res.write(data);
-      res.end();
-    });
+      }
   } else {
     figlet('404!!', function (err, data) {
       if (err) {
@@ -84,6 +63,11 @@ const server = http.createServer((req, res) => {
 
 //These 'app' code blocks are used to get CORS running on our server
 app.use(cors())
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
 app.get('/products/:id', function (req, res, next) {
   res.json({
@@ -92,6 +76,6 @@ app.get('/products/:id', function (req, res, next) {
 })
 
 //this starts the server //server.listen(8000);
-server.listen(8000, function () {
-  console.log(`This project can now be accessed on the browser at http://localhost:${server.address().port}`);
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`This project can now be accessed on the browser at http://localhost:${PORT}`);
 });
